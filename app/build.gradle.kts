@@ -38,6 +38,7 @@ android {
     }
     buildFeatures {
         compose = true
+        mlModelBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -50,6 +51,9 @@ android {
 }
 
 dependencies {
+
+    //material3
+    implementation ("androidx.compose.material3:material3:1.3.1")
 
     //Extended Icons
     implementation ("androidx.compose.material:material-icons-extended:<1.5.1>")
@@ -75,6 +79,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.tensorflow.lite.gpu)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -86,4 +91,10 @@ dependencies {
     val nav_version = "2.8.2"
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
+    // Tensorflow lite dependencies
+    implementation ("org.tensorflow:tensorflow-lite-support:0.1.0")
+    implementation ("org.tensorflow:tensorflow-lite-metadata:0.1.0")
+
+    // Coil
+    implementation("io.coil-kt:coil-compose:2.5.0")
 }
