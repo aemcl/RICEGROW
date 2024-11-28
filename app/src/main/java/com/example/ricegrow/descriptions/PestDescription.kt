@@ -38,7 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.ricegrow.CardItem
-import com.example.ricegrow.FAB
+import com.example.ricegrow.ImageCaptureAndUpload
 import com.example.ricegrow.MainTopBar
 import com.example.ricegrow.R
 import com.example.ricegrow.Routes
@@ -72,7 +72,7 @@ class PestDescription{
             ){
                 Image(
                     painter = painterResource(pestImage),
-                    contentDescription = "Black Rice",
+                    contentDescription = "",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -83,6 +83,7 @@ class PestDescription{
                 Text(
                     text = pestName,
                     fontSize = 38.sp,
+                    color = Color(0xFF2b2b2b),
                     fontWeight = FontWeight.Bold,
                     fontStyle = FontStyle.Italic,
                     modifier = Modifier.padding(start = 10.dp,top = 20.dp, bottom = 10.dp)
@@ -94,7 +95,7 @@ class PestDescription{
                     text = pestDescription ,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Light,
-                    color = Color.Gray,
+                    color = Color(0xFF2b2b2b),
                     textAlign = TextAlign.Justify,
                     modifier = Modifier.padding(10.dp)
                 )
@@ -116,7 +117,7 @@ class PestDescription{
                     fontWeight = FontWeight.Light,
                     fontSize = 20.sp,
                     textAlign = TextAlign.Justify,
-                    color = Color.Gray,
+                    color = Color(0xFF2b2b2b),
                     modifier = Modifier.padding(10.dp)
                 )
             }
@@ -134,7 +135,7 @@ class PestDescription{
         )
         Scaffold(
             modifier = Modifier.fillMaxSize(),
-            floatingActionButton = { FAB(navController) }
+            floatingActionButton = { ImageCaptureAndUpload().FAB(navController) }
         ) { padding ->
             Column {
                 MainTopBar(
@@ -200,7 +201,7 @@ class PestDescription{
     fun RiceBug(navController: NavController){
         PestDescription().PestDescriptionView(
             pestName = "Rice Bug",
-            pestDescription = "Right.  Rice bug infested grains\n" +
+            pestDescription = "Right. Rice bug infested grains\n" +
                             "Left. Rice bug attacking spikelet\n\n " +
                     "The insect attacks during spikelet stage of rice crop. Both nymphs and adults suck the content out of grains from " +
                     "pre-flowering spikelets to soft dough stage. This leads to unfilled, empty and discolored grains. \n" +

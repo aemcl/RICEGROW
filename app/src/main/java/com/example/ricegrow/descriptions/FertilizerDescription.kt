@@ -38,7 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.ricegrow.CardItem
-import com.example.ricegrow.FAB
+import com.example.ricegrow.ImageCaptureAndUpload
 import com.example.ricegrow.ListCard
 import com.example.ricegrow.MainTopBar
 import com.example.ricegrow.R
@@ -83,6 +83,7 @@ class FertilizerDescription {
                 Text(
                     text = fertilizerName,
                     fontSize = 38.sp,
+                    color = Color(0xFF2b2b2b),
                     fontWeight = FontWeight.Bold,
                     fontStyle = FontStyle.Italic,
                     modifier = Modifier.padding(start = 10.dp,top = 20.dp, bottom = 10.dp)
@@ -94,7 +95,7 @@ class FertilizerDescription {
                     text = fertilizerDescription,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Light,
-                    color = Color.Gray,
+                    color = Color(0xFF2b2b2b),
                     textAlign = TextAlign.Justify,
                     modifier = Modifier.padding(10.dp)
                 )
@@ -105,6 +106,7 @@ class FertilizerDescription {
                     text = "USAGE:",
                     fontWeight = FontWeight.Normal,
                     fontStyle = FontStyle.Italic,
+                    color = Color(0xFF2b2b2b),
                     fontSize = 28 .sp,
                     modifier = Modifier.padding(10.dp))
 
@@ -115,7 +117,7 @@ class FertilizerDescription {
                     fontWeight = FontWeight.Light,
                     fontSize = 20.sp,
                     textAlign = TextAlign.Justify,
-                    color = Color.Gray,
+                    color = Color(0xFF2b2b2b),
                     modifier = Modifier.padding(10.dp)
                 )
             }
@@ -127,14 +129,14 @@ class FertilizerDescription {
     fun ListOfFertilizer(navController: NavController) {
 
         val fertilizerList = listOf(
-            CardItem(R.drawable.fertone, "Black Rice Image", "14-14-14" , Routes.fertOne),
-            CardItem(R.drawable.ferttwo, "Black Rice Image",  "16-20-0" , Routes.fertTwo),
-            CardItem(R.drawable.fertthree, "Black Rice Image", "46-0-0 + 0-0-60" , Routes.fertThree)
+            CardItem(R.drawable.fertone, "fertone", "14-14-14" , Routes.fertOne),
+            CardItem(R.drawable.ferttwo, "ferttwo",  "16-20-0" , Routes.fertTwo),
+            CardItem(R.drawable.fertthree, "fertthree", "46-0-0 + 0-0-60" , Routes.fertThree)
         )
 
         Scaffold(
             modifier = Modifier.fillMaxSize(),
-            floatingActionButton = { FAB(navController) }
+            floatingActionButton = { ImageCaptureAndUpload().FAB(navController) }
         ) { padding ->
             Column {
                 MainTopBar(
@@ -201,11 +203,11 @@ class FertilizerDescription {
     fun FertThree(navController: NavController) {
         FertilizerDescription().FertilizerDescriptionView(
             fertilizerName = "46-0-0 + 0-0-60",
-            fertilizerDescription = " Provides aids in the development of strong root systems, enhances drought tolerance, and improves nutrient uptake.",
+            fertilizerDescription = "Provides aids in the development of strong root systems, enhances drought tolerance, and improves nutrient uptake.",
             fertilizerImage = R.drawable.fertthree,
             usage = "• 45-55 Days(Conception/Pregnant)\n" +
-                    "•  for the 46-0-0 it takes 1.5-2 sacks\n" +
-                    "    for the 0-0-60 it takes 1-2 sacks"
+                    "• for the 46-0-0 it takes 1.5-2 sacks\n" +
+                    "  for the 0-0-60 it takes 1-2 sacks"
         )
         MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "46-0-0 + 0-0-60",Routes.listfertilizer, navController = navController)
     }

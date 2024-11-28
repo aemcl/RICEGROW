@@ -88,8 +88,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    val nav_version = "2.8.2"
-    implementation("androidx.navigation:navigation-compose:$nav_version")
+    implementation("androidx.navigation:navigation-compose:2.8.2")
 
     // Tensorflow lite dependencies
     implementation ("org.tensorflow:tensorflow-lite-support:0.1.0")

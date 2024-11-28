@@ -38,7 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.ricegrow.CardItem
-import com.example.ricegrow.FAB
+import com.example.ricegrow.ImageCaptureAndUpload
 import com.example.ricegrow.Information
 import com.example.ricegrow.ListCard
 import com.example.ricegrow.MainTopBar
@@ -95,7 +95,7 @@ class RiceDescription {
                     text = info.description,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Light,
-                    color = Color.Gray,
+                    color = Color(0xFF2b2b2b),
                     textAlign = TextAlign.Justify,
                     modifier = Modifier.padding(10.dp)
                 )
@@ -116,7 +116,7 @@ class RiceDescription {
                     fontWeight = FontWeight.Light,
                     fontSize = 20.sp,
                     textAlign = TextAlign.Justify,
-                    color = Color.Gray,
+                    color = Color(0xFF2b2b2b),
                     modifier = Modifier.padding(10.dp)
                 )
 
@@ -136,7 +136,7 @@ class RiceDescription {
                     fontWeight = FontWeight.Light,
                     fontSize = 20.sp,
                     textAlign = TextAlign.Justify,
-                    color = Color.Gray,
+                    color = Color(0xFF2b2b2b),
                     modifier = Modifier.padding(10.dp)
                 )
             }
@@ -160,7 +160,7 @@ class RiceDescription {
 
         Scaffold(
             modifier = Modifier.fillMaxSize(),
-            floatingActionButton = { FAB(navController) }
+            floatingActionButton = { ImageCaptureAndUpload().FAB(navController) }
         ) { padding ->
             Column {
                 MainTopBar(

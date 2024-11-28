@@ -30,10 +30,10 @@ fun Navigation(){
             MainBottomBar(navController)
         }
 
-        composable("take_picture") { TakePicture(navController) }
+        composable("take_picture") { ImageCaptureAndUpload().TakePicture(navController) }
         composable("image_display/{imageUri}") { backStackEntry ->
             val imageUri = backStackEntry.arguments?.getString("imageUri")
-            ImageDisplayScreen(imageUri = imageUri, navController)
+            IdentifyDisease().ImageDisplayScreen(imageUri = imageUri, navController)
         }
 
 

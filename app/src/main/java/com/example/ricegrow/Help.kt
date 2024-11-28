@@ -27,30 +27,32 @@ class Help {
 
         val instructions = listOf(
             "Start the App\n" +
-                    "Tap the Start button on the home screen to begin.",
+                    "-Tap the Start button on the home screen to begin.",
             "View Rice, Fertilizer, Pest, and Disease Pages\n" +
-                    "After tapping Start, you will see four main options: Rice, Fertilizer, Pest, and Disease.\n" +
-                    "Tap on any of these options to explore related information.",
-            "Using the Camera for Disease Identification\n" +
-                    "Tap the Plus icon on the to identify diseases.\n" +
-                    "Choose either Take Picture or Upload Image.\n" +
-                    "The app will analyze the image and display the identified disease and you may view the full details.",
+                    "-After tapping Start, you will see four main options: Rice, Fertilizer, Pest, and Disease.\n" +
+                    "-Tap on any of these options to explore related information.",
+            "How to Identify Rice Diseases\n" +
+                    "-Tap the Plus icon to start. \n" +
+                    "-Choose Take Picture or Upload Image. \n" +
+                    "-The app will show the disease(s) it finds in your image. \n" +
+                    "-Tap on the disease name to learn more about it. \n" +
+                    "-If no disease is found, the app will say Unknown.\n",
             "Browsing Rice Varieties\n" +
-                    "In the Rice section, you will see different types of rice \n" +
-                    "Tap on any rice variety to see detailed information like planting and harvesting months.",
-            "Selecting Fertilizers\n" +
-                    "In the Fertilizer section, browse through various fertilizer options.\n" +
-                    "Tap on a fertilizer type to view details about its usage and benefits.",
-            "Identifying Pests\n" +
-                    "Go to the Pest section to see common rice pests.\n" +
-                    "Select a pest to learn about it, including symptoms and management tips.",
+                    "-In the Rice section, you will see different types of rice \n" +
+                    "-Tap on any rice variety to see detailed information like planting and harvesting months.\n",
+            "Browsing Fertilizers\n" +
+                    "-In the Fertilizer section, browse through various fertilizer options.\n" +
+                    "-Tap on a fertilizer type to view details about its usage and benefits.",
+            "Browsing Pests\n" +
+                    "-Go to the Pest section to see common rice pests.\n" +
+                    "-Select a pest to learn about it, including symptoms and management tips.",
             "Understanding Diseases\n" +
-                    "In the Disease section, find common rice diseases.\n" +
-                    "Tap a disease to see details, including causes and ways to manage it.",
+                    "-In the Disease section, find common rice diseases.\n" +
+                    "-Tap a disease to see details, including causes and ways to manage it.",
             "Navigating Back\n" +
-                    "Use the Back icon at the top or bottom to return to the previous screen.",
+                    "-Use the Back icon at the top or bottom to return to the previous screen.",
             "Home Navigation\n" +
-                    "Access the main screen at any time by tapping the Home icon at the top.\n"
+                    "-Access the main screen at any time by tapping the Home icon at the top.\n"
         )
 
         Column(
