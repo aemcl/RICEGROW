@@ -197,9 +197,6 @@ class RiceDescription {
         }
     }
 
-
-
-
 @Composable
 fun BlackRice(navController: NavController) {
     RiceDescription().RiceDescriptionView(

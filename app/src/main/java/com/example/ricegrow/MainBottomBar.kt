@@ -24,7 +24,6 @@ import com.example.ricegrow.descriptions.DiseaseDescription
 import com.example.ricegrow.descriptions.FertilizerDescription
 import com.example.ricegrow.descriptions.PestDescription
 import com.example.ricegrow.descriptions.RiceDescription
-import com.example.ricegrow.ui.theme.RiceGrowTheme
 
 @Composable
 fun MainBottomBar(navController: NavController){

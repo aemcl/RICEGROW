@@ -27,6 +27,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -36,10 +37,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import org.tensorflow.lite.Interpreter
@@ -105,26 +109,33 @@ class IdentifyDisease {
                         .border(2.dp, Color.Gray, RoundedCornerShape(12.dp)),
                     shape = RoundedCornerShape(12.dp)
                 ) {
-                    Image(
-                        painter = rememberAsyncImagePainter(decodedUri),
-                        contentDescription = "Captured Image",
-                        modifier = Modifier.fillMaxSize(),
-                        contentScale = ContentScale.Crop
-                    )
+                    if (currentBitmap != null) {
+                        // Use currentBitmap directly as it is now resized
+                        Image(
+                            bitmap = currentBitmap!!.asImageBitmap(), // Assuming you're using Jetpack Compose
+                            contentDescription = "Captured Image",
+                            modifier = Modifier.fillMaxSize(),
+                            contentScale = ContentScale.Crop
+                        )
+                    }
                 }
 
-                if (isClassifying) {
-                    Text(
-                        text = "Classifying...",
-                        modifier = Modifier.padding(8.dp),
-                        color = Color.Gray
-                    )
-                } else if (classificationResult.isNotEmpty()) {
+                if (classificationResult.isNotEmpty()) {
                     val topResult = classificationResult.maxByOrNull { it.second }
-                    if (topResult != null && topResult.first == "Unknown") {
+                    if (topResult != null) {
+                        val (className, confidence) = topResult
+                        val message = when (className) {
+                            "Unknown" -> "Unknown image. Not a rice disease."
+                            "Bacterialblight" -> "Bacterial Blight"
+                            "Blast" -> "Rice Blast"
+                            "Brownspot" -> "Brown Spot"
+                            "Tungro" -> "Tungro"
+                            else -> "Unrecognized classification."
+                        }
                         Text(
-                            text = "Unknown image. Not a rice disease.",
-                            color = Color.Red,
+                            text = message,
+                            fontSize = 20.sp,
+                            color = if (className == "Unknown") Color(0xFFBB0707) else Color(0xFF2b2b2b),
                             modifier = Modifier
                                 .padding(top = 16.dp, bottom = 8.dp)
                                 .align(Alignment.CenterHorizontally)
@@ -141,7 +152,7 @@ class IdentifyDisease {
                             Card(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(vertical = 4.dp)
+                                    .padding(vertical = 6.dp)
                                     .clickable {
                                         when (className) {
                                             "Bacterialblight" -> navController.navigate(Routes.riceBacterialblight)
@@ -153,15 +164,17 @@ class IdentifyDisease {
                                             }
                                         }
                                     },
-                                shape = RoundedCornerShape(12.dp)
+                                shape = RoundedCornerShape(12.dp),
+                                elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
                             ) {
                                 Column(
                                     modifier = Modifier.padding(16.dp)
                                 ) {
-                                    Text(text = "$className", color = Color.Black)
+                                    Text(text = "$className", color = Color(0xFF2b2b2b), fontSize = 24.sp)
                                     Text(
                                         text = "Confidence: ${"%.2f".format(percentage * 100)}%",
-                                        color = Color.Gray
+                                        color = Color(0xFF575555),
+                                        fontSize = 14.sp
                                     )
                                 }
                             }
@@ -173,24 +186,30 @@ class IdentifyDisease {
                                     val classificationText = classificationResult.joinToString("\n") { (className, confidence) ->
                                         "Class: $className, Confidence: ${"%.2f".format(confidence * 100)}%"
                                     }
-                                    val bitmap = getBitmapFromUri(context, decodedUri) // Reuse the image
-                                    if (bitmap != null) {
-                                        saveImageToDownloads(context, bitmap)
+                                    val resizedBitmap = getBitmapFromUri(context, decodedUri)
+                                    if (resizedBitmap != null) {
+                                        saveImageToDownloads(context, resizedBitmap) // Save the resized image
                                         saveTextToDownloads(context, classificationText)
                                     } else {
-                                        Toast.makeText(context, "Bitmap is null, cannot save!", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(context, "Resized Bitmap is null, cannot save!", Toast.LENGTH_SHORT).show()
                                     }
                                 } catch (e: Exception) {
-                                    Log.e("SaveResultError", "Error saving results: ${e.message}")
+                                    Log.e("SaveResultError", "Error saving results: ${e.message}", e)
                                     Toast.makeText(context, "Failed to save results. Please try again.", Toast.LENGTH_SHORT).show()
                                 }
                             },
-                            modifier = Modifier.align(Alignment.CenterHorizontally),
+                            modifier = Modifier
+                                .align(Alignment.CenterHorizontally)
+                                .padding(bottom = 30.dp)
+                                .shadow(
+                                    elevation = 10.dp,
+                                    spotColor = Color.DarkGray,
+                                    shape = RoundedCornerShape(30.dp)
+                                ),
                             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFEBDA98)),
                         ) {
-                            Text(text = "Save Results", color = Color(0xFF2b2b2b))
+                            Text(text = "Save Results", color = Color(0xFF2b2b2b), fontSize = 20.sp)
                         }
-
                     }
                 } else {
                     Text(
@@ -206,9 +225,12 @@ class IdentifyDisease {
     private fun getBitmapFromUri(context: Context, uri: Uri): Bitmap? {
         return try {
             val inputStream = context.contentResolver.openInputStream(uri)
-            BitmapFactory.decodeStream(inputStream).also {
-                Log.d("BitmapInfo", "Loaded bitmap size: ${it?.width}x${it?.height}")
-                inputStream?.close()
+            val originalBitmap = BitmapFactory.decodeStream(inputStream)
+            inputStream?.close()
+
+            // Resize the bitmap to 150x150
+            originalBitmap?.let { resizeBitmap(it, 1080, 1080 ) }?.also {
+                Log.d("BitmapInfo", "Loaded and resized bitmap size: ${it.width}x${it.height}")
             }
         } catch (e: Exception) {
             Log.e("BitmapError", "Failed to decode bitmap from URI: ${e.message}")
@@ -245,7 +267,7 @@ class IdentifyDisease {
     }
 
     private fun loadModelFile(context: Context): MappedByteBuffer {
-        val fileDescriptor = context.assets.openFd("rice_diseasewithUnkown.tflite")
+        val fileDescriptor = context.assets.openFd("rice_diseaseII.tflite")
         val inputStream = FileInputStream(fileDescriptor.fileDescriptor)
         val fileChannel = inputStream.channel
         val startOffset = fileDescriptor.startOffset
@@ -282,6 +304,9 @@ class IdentifyDisease {
             }
 
             val uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+            if (uri == null) {
+                throw Exception("Failed to insert image into MediaStore")
+            }
             uri?.let {
                 contentResolver.openOutputStream(uri).use { outputStream ->
                     if (outputStream != null) {
@@ -293,12 +318,10 @@ class IdentifyDisease {
                 }
             } ?: throw Exception("Failed to insert image into MediaStore")
         } catch (e: Exception) {
-            Log.e("SaveImageError", "Error saving image: ${e.message}")
+            Log.e("SaveImageError", "Error saving image: ${e.message}", e)
             Toast.makeText(context, "Error saving image: ${e.message}", Toast.LENGTH_SHORT).show()
         }
     }
-
-
 
     private fun saveTextToDownloads(context: Context, classificationText: String) {
         try {
@@ -317,7 +340,7 @@ class IdentifyDisease {
                 Toast.makeText(context, "Text file saved to Downloads", Toast.LENGTH_SHORT).show()
             } ?: throw Exception("Failed to insert text file into MediaStore")
         } catch (e: Exception) {
-            Log.e("SaveTextError", "Error saving text file: ${e.message}")
+            Log.e("SaveTextFileError", "Error saving image: ${e.message}", e)
             Toast.makeText(context, "Error saving text file: ${e.message}", Toast.LENGTH_SHORT).show()
         }
     }
