@@ -19,6 +19,7 @@ import androidx.compose.material.icons.filled.QuestionMark
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -40,7 +41,7 @@ fun Home(navController: NavController){
     Column (
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFF5F5DC)),
+            .background(MaterialTheme.colorScheme.background),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ){
@@ -58,13 +59,14 @@ fun Home(navController: NavController){
             fontWeight = FontWeight.ExtraLight,
             fontStyle = FontStyle.Italic,
             fontFamily = FontFamily.Monospace,
-            color = Color.Gray
+            color = MaterialTheme.colorScheme.onSurface
+            //color = Color.Gray
         )
 
         Spacer(modifier = Modifier.height(100.dp))
 
         Button(
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFEBDA98)),
+            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
             modifier = Modifier
                 .height(50.dp)
                 .width(250.dp)
@@ -75,20 +77,18 @@ fun Home(navController: NavController){
                 ),
             onClick = {navController.navigate(Routes.mainbottombar)}
         ){
-            Text(text = "START", fontSize = 20.sp, color = Color(0xFF2b2b2b))
+            Text(text = "START", fontSize = 20.sp, color = MaterialTheme.colorScheme.onSurface)
         }
 
         Spacer(modifier = Modifier.height(100.dp))
 
     }//Column
-
     Box(
         modifier = Modifier.fillMaxSize()
     ){
-
         Icon(imageVector = Icons.Filled.QuestionMark,
             contentDescription = "Help",
-            tint = Color(0xFF2b2b2b),
+            tint = MaterialTheme.colorScheme.onPrimary,
             modifier = Modifier
                 .size(90.dp)
                 .align(Alignment.TopEnd)

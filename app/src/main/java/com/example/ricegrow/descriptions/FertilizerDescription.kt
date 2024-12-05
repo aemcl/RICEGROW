@@ -23,6 +23,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -55,11 +56,11 @@ class FertilizerDescription {
     ){
         Box(modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFF5F5DC))
+            .background(MaterialTheme.colorScheme.background)
         )
         ElevatedCard(
             elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
-            colors = CardDefaults.cardColors(containerColor = Color(0xFFF5F5DC)),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.background),
             modifier = Modifier
                 .fillMaxSize()
                 .padding(top = 100.dp)
@@ -83,7 +84,7 @@ class FertilizerDescription {
                 Text(
                     text = fertilizerName,
                     fontSize = 38.sp,
-                    color = Color(0xFF2b2b2b),
+                    color = MaterialTheme.colorScheme.onSurface,
                     fontWeight = FontWeight.Bold,
                     fontStyle = FontStyle.Italic,
                     modifier = Modifier.padding(start = 10.dp,top = 20.dp, bottom = 10.dp)
@@ -95,7 +96,7 @@ class FertilizerDescription {
                     text = fertilizerDescription,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Light,
-                    color = Color(0xFF2b2b2b),
+                    color = MaterialTheme.colorScheme.onSurface,
                     textAlign = TextAlign.Justify,
                     modifier = Modifier.padding(10.dp)
                 )
@@ -106,7 +107,7 @@ class FertilizerDescription {
                     text = "USAGE:",
                     fontWeight = FontWeight.Normal,
                     fontStyle = FontStyle.Italic,
-                    color = Color(0xFF2b2b2b),
+                    color = MaterialTheme.colorScheme.onSurface,
                     fontSize = 28 .sp,
                     modifier = Modifier.padding(10.dp))
 
@@ -117,7 +118,7 @@ class FertilizerDescription {
                     fontWeight = FontWeight.Light,
                     fontSize = 20.sp,
                     textAlign = TextAlign.Justify,
-                    color = Color(0xFF2b2b2b),
+                    color = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier.padding(10.dp)
                 )
             }

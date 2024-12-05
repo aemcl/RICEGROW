@@ -10,6 +10,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -28,6 +29,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -45,7 +47,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import coil.compose.rememberAsyncImagePainter
 import org.tensorflow.lite.Interpreter
 import java.io.FileInputStream
 import java.nio.ByteBuffer
@@ -90,9 +91,10 @@ class IdentifyDisease {
                     isClassifying = false
                 }
             }
-
+            
             Column(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier.fillMaxSize()
+                    .background(MaterialTheme.colorScheme.background),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 MainTopBar(
@@ -102,6 +104,7 @@ class IdentifyDisease {
                     navController = navController
                 )
                 Card(
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primary),
                     modifier = Modifier
                         .padding(16.dp)
                         .fillMaxWidth()
@@ -112,7 +115,7 @@ class IdentifyDisease {
                     if (currentBitmap != null) {
                         // Use currentBitmap directly as it is now resized
                         Image(
-                            bitmap = currentBitmap!!.asImageBitmap(), // Assuming you're using Jetpack Compose
+                            bitmap = currentBitmap!!.asImageBitmap(),
                             contentDescription = "Captured Image",
                             modifier = Modifier.fillMaxSize(),
                             contentScale = ContentScale.Crop
@@ -135,7 +138,7 @@ class IdentifyDisease {
                         Text(
                             text = message,
                             fontSize = 20.sp,
-                            color = if (className == "Unknown") Color(0xFFBB0707) else Color(0xFF2b2b2b),
+                            color = if (className == "Unknown") Color(0xFFBB0707) else MaterialTheme.colorScheme.onSurface,
                             modifier = Modifier
                                 .padding(top = 16.dp, bottom = 8.dp)
                                 .align(Alignment.CenterHorizontally)
@@ -165,7 +168,8 @@ class IdentifyDisease {
                                         }
                                     },
                                 shape = RoundedCornerShape(12.dp),
-                                elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+                                elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+                                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primary)
                             ) {
                                 Column(
                                     modifier = Modifier.padding(16.dp)
@@ -173,7 +177,7 @@ class IdentifyDisease {
                                     Text(text = "$className", color = Color(0xFF2b2b2b), fontSize = 24.sp)
                                     Text(
                                         text = "Confidence: ${"%.2f".format(percentage * 100)}%",
-                                        color = Color(0xFF575555),
+                                        color = MaterialTheme.colorScheme.onSurface,
                                         fontSize = 14.sp
                                     )
                                 }
@@ -206,16 +210,16 @@ class IdentifyDisease {
                                     spotColor = Color.DarkGray,
                                     shape = RoundedCornerShape(30.dp)
                                 ),
-                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFEBDA98)),
+                            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
                         ) {
-                            Text(text = "Save Results", color = Color(0xFF2b2b2b), fontSize = 20.sp)
+                            Text(text = "Save Results", color = MaterialTheme.colorScheme.onSurface, fontSize = 20.sp)
                         }
                     }
                 } else {
                     Text(
                         text = "No classification results available.",
                         modifier = Modifier.padding(8.dp),
-                        color = Color.Red
+                        color = Color(0xFFF52C2C)
                     )
                 }
             }

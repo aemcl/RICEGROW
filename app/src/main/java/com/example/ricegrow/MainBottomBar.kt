@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemColors
@@ -16,7 +17,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -44,9 +44,9 @@ fun MainBottomBar(navController: NavController){
                 NavigationBar(
                     modifier = Modifier .shadow(
                         elevation = 10.dp,
-                        spotColor = Color(0xFF2b2b2b)
+                        spotColor = MaterialTheme.colorScheme.onSurface
                     ),
-                    containerColor = Color(0xFFEBDA98),
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
                 ) {
                     navItemList.forEachIndexed{ index, navItem ->
                         NavigationBarItem(
@@ -54,13 +54,13 @@ fun MainBottomBar(navController: NavController){
                             selected = selectedIndex == index,
                             onClick = { selectedIndex = index},
                             colors = NavigationBarItemColors(
-                                selectedIconColor= (Color(0xFF2b2b2b)),
-                                selectedTextColor= (Color(0xFF2b2b2b)),
-                                selectedIndicatorColor= (Color(0xFFF1F1C3)),
-                                unselectedIconColor= (Color(0xFF5E5D5D)),
-                                unselectedTextColor= (Color(0xFF5E5D5D)),
-                                disabledIconColor= (Color(0xFF2b2b2b)),
-                                disabledTextColor = (Color(0xFF2b2b2b))
+                                selectedIconColor= (MaterialTheme.colorScheme.onSurface),
+                                selectedTextColor= (MaterialTheme.colorScheme.onSurface),
+                                selectedIndicatorColor= (MaterialTheme.colorScheme.secondary),
+                                unselectedIconColor= (MaterialTheme.colorScheme.onSecondary),
+                                unselectedTextColor= (MaterialTheme.colorScheme.onSecondary),
+                                disabledIconColor= (MaterialTheme.colorScheme.onSurface),
+                                disabledTextColor = (MaterialTheme.colorScheme.onSurface)
                             ),
                             icon = {
                                 Icon(

@@ -1,20 +1,26 @@
 package com.example.ricegrow.ui.theme
 
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
     secondary = PurpleGrey80,
-    tertiary = Pink80
+    tertiary = Pink80,
+
+    // Other default colors to override
+    background = Color(0xFF2b2b2b),
+    surface = Color(0xFF6D6D6C),
+    onPrimary = Color.White,
+    primaryContainer = Color(0xFF6D6D6C),//bg for container,
+    onSecondary = Color.White,
+    onTertiary = Color.White,
+    onBackground = Color(0xFF1C1B1F),
+    onSurface = Color(0xFFF5F5DC),
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -23,36 +29,27 @@ private val LightColorScheme = lightColorScheme(
     tertiary = Pink40,
 
     // Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
+    background = Color(0xFFF5F5DC),
+    surface = Color(0xFFECD98F),//(used for cards, sheets, etc.)
+    onPrimary = Color(0xFF2b2b2b),  //(text/icons)
+    primaryContainer = Color(0xFFECD98F),
+    onSecondary = Color(0xFF5E5D5D),//unselected icon color
     onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
+    onBackground = Color(0xFFEEEBEB),//card names
+    onSurface = Color(0xFF2b2b2b),//(text/icons on light surfaces)
 
 )
 
 @Composable
 fun RiceGrowTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    darkTheme: Boolean = isSystemInDarkTheme(), // Automatically switches based on system theme
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
+    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = Typography, // Define your typography here
         content = content
     )
 }

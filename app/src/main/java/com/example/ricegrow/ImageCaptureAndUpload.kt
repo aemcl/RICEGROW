@@ -37,6 +37,7 @@ import androidx.compose.material.icons.filled.PhotoCamera
 import androidx.compose.material3.Card
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -82,11 +83,12 @@ import java.util.Objects
 
                              Text(
                                  text = " Camera ",
+                                 color = MaterialTheme.colorScheme.onSurface,
                                  modifier = Modifier
                                      .padding(6.dp)
-                                     .border(8.dp, Color(0xFFF1F1C3), RoundedCornerShape(10.dp))
+                                     .border(8.dp, MaterialTheme.colorScheme.primaryContainer, RoundedCornerShape(10.dp))
                                      .padding(6.dp)
-                                     .background(Color(0xFFF1F1C3)
+                                     .background(MaterialTheme.colorScheme.primaryContainer
                                      )
                              )
                              Spacer(modifier = Modifier.width(10.dp))
@@ -101,11 +103,12 @@ import java.util.Objects
 
                              Text(
                                  text = " Gallery ",
+                                 color = MaterialTheme.colorScheme.onSurface,
                                  modifier = Modifier
                                      .padding(6.dp)
-                                     .border(8.dp, Color(0xFFF1F1C3), RoundedCornerShape(10.dp))
+                                     .border(8.dp,MaterialTheme.colorScheme.primaryContainer, RoundedCornerShape(10.dp))
                                      .padding(8.dp)
-                                     .background(Color(0xFFF1F1C3)
+                                     .background(MaterialTheme.colorScheme.primaryContainer
                                      )
                              )
                              Spacer(modifier = Modifier.width(10.dp))
@@ -124,7 +127,7 @@ import java.util.Objects
                  modifier = Modifier
                      .rotate(rotation)
                      .size(80.dp),
-                 containerColor = Color(0xFFECD98F)
+                 containerColor = MaterialTheme.colorScheme.primary
              ) {
                  Icon(
                      imageVector = Icons.Filled.Add, contentDescription = "",
@@ -179,7 +182,7 @@ import java.util.Objects
                  }
              },
              modifier = Modifier.size(50.dp),
-             containerColor = Color(0xFFF5F5B0)
+             containerColor = MaterialTheme.colorScheme.primary
          ) {
              Icon(imageVector = Icons.Default.PhotoCamera, contentDescription = "")
          }
@@ -234,14 +237,11 @@ import java.util.Objects
                  )
              },
              modifier = Modifier.size(50.dp),
-             containerColor = Color(0xFFF5F5B0)
+             containerColor = MaterialTheme.colorScheme.primaryContainer
          ) {
              Icon(imageVector = Icons.Default.Photo, contentDescription = "Upload Image")
          }
      }
-
-
-
 
      //Take Picture
      @SuppressLint("SimpleDateFormat")
@@ -256,5 +256,4 @@ import java.util.Objects
          )
          return image
      }
-
  }

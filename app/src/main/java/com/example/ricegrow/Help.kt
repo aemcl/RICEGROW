@@ -12,11 +12,11 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -58,22 +58,33 @@ class Help {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFFF5F5DC)),
+                .background(color = MaterialTheme.colorScheme.background),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             ElevatedCard(
                 elevation = CardDefaults.cardElevation(
                     defaultElevation = 6.dp),
-                colors = CardDefaults.cardColors(containerColor = Color(0xFFEBDA98)),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
                 modifier = Modifier.size(width =320.dp, height = 500.dp)
                     .verticalScroll(rememberScrollState())
             ) {
-                Text(text = "How to Use the Rice Grow App:", textAlign = TextAlign.Center,fontSize = 20.sp, modifier = Modifier.padding(start = 10.dp, top = 10.dp, bottom = 15.dp))
+                Text(
+                    text = "How to Use the Rice Grow App:",
+                    textAlign = TextAlign.Center,
+                    fontSize = 20.sp,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    modifier = Modifier.padding(start = 10.dp, top = 10.dp, bottom = 15.dp)
+                )
                 Spacer(modifier = Modifier.height(10.dp))
 
                 instructions.forEach{ item ->
-                    Text(text = "•   $item", fontSize = 16.sp, modifier = Modifier.padding(start = 12.dp, end = 10.dp, bottom = 20.dp))
+                    Text(
+                        text = "•   $item",
+                        fontSize = 16.sp,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        modifier = Modifier.padding(start = 12.dp, end = 10.dp, bottom = 20.dp)
+                    )
                 }
 
             }

@@ -23,12 +23,12 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
@@ -53,13 +53,15 @@ class DiseaseDescription{
         diseaseCauses: String,
         treatment: String
     ){
-        Box(modifier = Modifier
-            .fillMaxSize()
-            .background(Color(0xFFF5F5DC))
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+                .padding(bottom = 100.dp)
         )
         ElevatedCard(
             elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
-            colors = CardDefaults.cardColors(containerColor = Color(0xFFF5F5DC)),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.background),
             modifier = Modifier
                 .fillMaxSize()
                 .padding(top = 100.dp)
@@ -79,22 +81,19 @@ class DiseaseDescription{
                         .height(400.dp)
                         .clip(RoundedCornerShape(50.dp))
                 )
-
                 Text(
                     text = info.name,
                     fontSize = 40.sp,
-                    color = Color(0xFF2b2b2b),
+                    color = MaterialTheme.colorScheme.onSurface,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.padding(10.dp)
                 )
-
                 Spacer(modifier = Modifier.height(4.dp))
-
                 Text(
                     text = info.description ,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Light,
-                    color = Color(0xFF2b2b2b),
+                    color = MaterialTheme.colorScheme.onSurface,
                     textAlign = TextAlign.Justify,
                     modifier = Modifier.padding(10.dp)
                 )
@@ -105,7 +104,7 @@ class DiseaseDescription{
                     text = "Cause: $diseaseCauses",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Light,
-                    color = Color(0xFF2b2b2b),
+                    color = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier.padding(10.dp)
                 )
 
@@ -116,7 +115,7 @@ class DiseaseDescription{
                     text = "HOW TO MANAGE:",
                     fontWeight = FontWeight.Normal,
                     fontStyle = FontStyle.Italic,
-                    color = Color(0xFF2b2b2b),
+                    color = MaterialTheme.colorScheme.onSurface,
                     fontSize = 28 .sp,
                     modifier = Modifier.padding(10.dp)
                 )
@@ -125,12 +124,11 @@ class DiseaseDescription{
                     fontWeight = FontWeight.Light,
                     fontSize = 20.sp,
                     textAlign = TextAlign.Justify,
-                    color = Color(0xFF2b2b2b),
+                    color = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier.padding(10.dp)
                 )
             }
         }
-
     }
 
     @Composable
@@ -156,7 +154,7 @@ class DiseaseDescription{
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Color(0xFFF5F5DC))
+                        .background(MaterialTheme.colorScheme.background)
                         .padding(padding)
                 ) {
                     LazyVerticalGrid(
