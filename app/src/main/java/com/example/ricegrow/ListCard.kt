@@ -74,7 +74,6 @@ fun ListCard(
     }
 }
 
-
 // Data class for card items
 data class CardItem(
     val painter: Int,

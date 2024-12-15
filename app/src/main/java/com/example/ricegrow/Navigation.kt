@@ -36,10 +36,6 @@ fun Navigation(){
             IdentifyDisease().ImageDisplayScreen(imageUri = imageUri, navController)
         }
 
-
-
-
-
         //rice
         composable(Routes.blackrice) {
             RiceDescription().BlackRice(navController)
@@ -100,7 +96,6 @@ fun Navigation(){
             PestDescription().RiceCaseworm(navController)
         }
 
-
         //Diseases
         composable(Routes.listdiseases) {
             DiseaseDescription().ListOfDisease(navController)
@@ -117,6 +112,5 @@ fun Navigation(){
         composable(Routes.riceblast) {
             DiseaseDescription().RiceBlast(navController)
         }
-
     })
 }

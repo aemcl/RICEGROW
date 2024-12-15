@@ -243,7 +243,7 @@ import java.util.Objects
          }
      }
 
-     //Take Picture
+     //Take Picture Helper Function
      @SuppressLint("SimpleDateFormat")
      fun Context.createImageFile(): File {
 // Create an image file name

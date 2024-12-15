@@ -91,7 +91,6 @@ class IdentifyDisease {
                     isClassifying = false
                 }
             }
-            
             Column(
                 modifier = Modifier.fillMaxSize()
                     .background(MaterialTheme.colorScheme.background),
@@ -122,7 +121,6 @@ class IdentifyDisease {
                         )
                     }
                 }
-
                 if (classificationResult.isNotEmpty()) {
                     val topResult = classificationResult.maxByOrNull { it.second }
                     if (topResult != null) {
@@ -144,7 +142,6 @@ class IdentifyDisease {
                                 .align(Alignment.CenterHorizontally)
                         )
                     }
-
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
