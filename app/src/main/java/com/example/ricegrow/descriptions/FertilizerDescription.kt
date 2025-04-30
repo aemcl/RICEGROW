@@ -20,6 +20,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
@@ -144,6 +145,9 @@ class FertilizerDescription {
                     icon = Icons.Filled.Home,
                     pageTitle = "Rice Fertilizer",
                     iconRoute = Routes.home,
+                    action_icon = Icons.Filled.History,
+                    actionTitle = "history",
+                    actionRoute = "",
                     navController = navController
                 )
                 Box(
@@ -185,7 +189,9 @@ class FertilizerDescription {
             usage = "• It will be placed during 0-14 days\n" +
                     "• 3-4 sacks"
         )
-        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "14-14-14",Routes.listfertilizer, navController = navController)
+        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "14-14-14",Routes.listfertilizer, action_icon = Icons.Filled.History,
+            actionTitle = "history",
+            actionRoute = "",navController = navController)
     }
 
     @Composable
@@ -197,7 +203,9 @@ class FertilizerDescription {
             usage = "• 25-30 days placed after transplanting \n" +
                     "• 1.5-2 sacks(Optional)"
         )
-        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "16-20-0",Routes.listfertilizer, navController = navController)
+        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "16-20-0",Routes.listfertilizer, action_icon = Icons.Filled.History,
+            actionTitle = "history",
+            actionRoute = "",navController = navController)
     }
 
     @Composable
@@ -210,6 +218,8 @@ class FertilizerDescription {
                     "• for the 46-0-0 it takes 1.5-2 sacks\n" +
                     "  for the 0-0-60 it takes 1-2 sacks"
         )
-        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "46-0-0 + 0-0-60",Routes.listfertilizer, navController = navController)
+        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "46-0-0 + 0-0-60",Routes.listfertilizer, action_icon = Icons.Filled.History,
+            actionTitle = "history",
+            actionRoute = "",navController = navController)
     }
 }

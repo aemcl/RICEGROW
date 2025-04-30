@@ -8,7 +8,7 @@ object Routes {
     val listpest = "list of pest"
     val listdiseases = "list of diseases"
     val mainbottombar = "Main Screen"
-
+    val history = "History"
     //Rice Package
     var blackrice = "Black Rice Description"
     var kasolid = "Kasolid"

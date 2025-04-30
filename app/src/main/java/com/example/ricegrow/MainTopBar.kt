@@ -3,6 +3,8 @@
 package com.example.ricegrow
 
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.History
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -20,7 +22,14 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun MainTopBar(icon: ImageVector, pageTitle: String, iconRoute: String, navController: NavController){
+fun MainTopBar(
+    icon: ImageVector,
+    pageTitle: String,
+    iconRoute: String,
+    action_icon: ImageVector,
+    actionTitle: String,
+    actionRoute: String,
+    navController: NavController){
     CenterAlignedTopAppBar(
         modifier = Modifier.shadow(
             elevation = 10.dp,
@@ -55,7 +64,18 @@ fun MainTopBar(icon: ImageVector, pageTitle: String, iconRoute: String, navContr
                 )
             }
         },
-        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(containerColor = MaterialTheme.colorScheme.primaryContainer)
+        actions = {
+            IconButton(onClick = { navController.navigate(actionRoute) }) {
+                Icon(
+                    imageVector = action_icon,
+                    modifier = Modifier.size(50.dp),
+                    contentDescription = actionTitle,
+                    tint =  MaterialTheme.colorScheme.onSurface
 
+                )
+            }
+        },
+
+        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(containerColor = MaterialTheme.colorScheme.primaryContainer)
     )
 }

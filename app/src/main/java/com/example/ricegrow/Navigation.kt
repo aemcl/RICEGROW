@@ -8,6 +8,7 @@ import com.example.ricegrow.descriptions.DiseaseDescription
 import com.example.ricegrow.descriptions.FertilizerDescription
 import com.example.ricegrow.descriptions.PestDescription
 import com.example.ricegrow.descriptions.RiceDescription
+import okhttp3.Route
 
 
 @Composable
@@ -36,6 +37,9 @@ fun Navigation(){
             IdentifyDisease().ImageDisplayScreen(imageUri = imageUri, navController)
         }
 
+        composable(Routes.history) {
+            History(navController)
+        }
         //rice
         composable(Routes.blackrice) {
             RiceDescription().BlackRice(navController)

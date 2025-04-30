@@ -20,6 +20,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
@@ -143,6 +144,9 @@ class PestDescription{
                     icon = Icons.Filled.Home,
                     pageTitle = "Rice Pest",
                     iconRoute = Routes.home,
+                    action_icon = Icons.Filled.History,
+                    actionTitle = "history",
+                    actionRoute = "",
                     navController = navController
                 )
                 Box(
@@ -182,7 +186,9 @@ class PestDescription{
             pestImage = R.drawable.ricemealybugs,
             management = "Augment biocontrol agents (like lady bird beetles, chloropid flies, spiders, small encyrtid wasps) in rice fields. "
         )
-        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Rice Mealy Bugs", iconRoute = "", navController = navController)
+        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Rice Mealy Bugs", iconRoute = "", action_icon = Icons.Filled.History,
+            actionTitle = "history",
+            actionRoute = "",navController = navController)
     }
 
     @Composable
@@ -195,7 +201,9 @@ class PestDescription{
             management = "Drain water to remove floating larvae from field. Follow proper cultivation practices like nitrogen application and spacing. " +
                     "Encourage biological control agents like snails, spiders, lady bird beetles, dragon flies in rice field."
         )
-        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Rice Caseworm", iconRoute = "", navController = navController)
+        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Rice Caseworm", iconRoute = "",action_icon = Icons.Filled.History,
+            actionTitle = "history",
+            actionRoute = "", navController = navController)
     }
 
     @Composable
@@ -211,7 +219,9 @@ class PestDescription{
             management = "Keep the field and surrounding area free from weeds which serves as alternative host for insect during non cropping season. Equal distribution of fertilizers and water in rice field to encourage even crop growth. Collect and kill " +
                     "insects manually by using net during early morning and late after noon. Encourage biological control agents."
         )
-        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Rice Bug", iconRoute = "", navController = navController)
+        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Rice Bug", iconRoute = "", action_icon = Icons.Filled.History,
+            actionTitle = "history",
+            actionRoute = "",navController = navController)
     }
 
     @Composable
@@ -226,6 +236,8 @@ class PestDescription{
                     "natural enemies and predators are often very successful at controlling hoppers and should be conserved by avoiding inappropriate use of insecticides which can damage their populations; " +
                     "planting resistant varieties is a very effective control method; chemical control with an appropriate insecticide may be necessary but should only be applied if the insects have reached an economic threshold"
         )
-        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Green Leafhoppers", iconRoute = "", navController = navController)
+        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Green Leafhoppers", iconRoute = "", action_icon = Icons.Filled.History,
+            actionTitle = "history",
+            actionRoute = "",navController = navController)
     }
 }//class end

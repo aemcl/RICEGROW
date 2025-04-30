@@ -25,6 +25,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.History
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -97,9 +99,12 @@ class IdentifyDisease {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 MainTopBar(
-                    icon = Icons.AutoMirrored.Filled.ArrowBack,
-                    pageTitle = "Identify Rice Disease",
-                    iconRoute = "",
+                    icon = Icons.Filled.Home,
+                    pageTitle = "Rice Disease",
+                    iconRoute = Routes.home,
+                    action_icon = Icons.Filled.History,
+                    actionTitle = "history",
+                    actionRoute = "",
                     navController = navController
                 )
                 Card(

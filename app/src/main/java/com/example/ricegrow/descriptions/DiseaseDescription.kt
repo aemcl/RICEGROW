@@ -19,6 +19,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
@@ -149,6 +150,9 @@ class DiseaseDescription{
                     icon = Icons.Filled.Home,
                     pageTitle = "Rice Disease",
                     iconRoute = Routes.home,
+                    action_icon = Icons.Filled.History,
+                    actionTitle = "history",
+                    actionRoute = "",
                     navController = navController
                 )
                 Box(
@@ -191,7 +195,15 @@ class DiseaseDescription{
             treatment = "Bacterial blight can be effectively controlled by planting resistant rice varieties;" +
                     " avoid excessive nitrogen fertilization; plow stubble and straw into soil after harvest"
         )
-        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Rice Bacterial Blight",Routes.listdiseases, navController = navController)
+        MainTopBar(
+            icon = Icons.AutoMirrored.Filled.ArrowBack,
+            pageTitle = "Rice Bacterial Blight",
+            Routes.listdiseases,
+            action_icon = Icons.Filled.History,
+            actionTitle = "history",
+            actionRoute = "",
+            navController = navController
+        )
     }
 
     @Composable
@@ -211,7 +223,15 @@ class DiseaseDescription{
                     "varieties can help reduce the incidence of the disease. Avoiding excessive nitrogen fertilization " +
                     "and controlling the movement of rice plants between fields can also limit spread."
         )
-        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Tungro",Routes.listdiseases, navController = navController)
+        MainTopBar(
+            icon = Icons.AutoMirrored.Filled.ArrowBack,
+            pageTitle = "Tungro",
+            Routes.listdiseases,
+            action_icon = Icons.Filled.History,
+            actionTitle = "history",
+            actionRoute = "",
+            navController = navController
+        )
     }
 
     @Composable
@@ -233,7 +253,9 @@ class DiseaseDescription{
                     "overcrowding are other effective preventive measures. Timely application of fungicides can " +
                     "help manage the disease, especially during the tillering and panicle initiation stages."
         )
-        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Brown Spot",Routes.listdiseases, navController = navController)
+        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Brown Spot",Routes.listdiseases, action_icon = Icons.Filled.History,
+            actionTitle = "history",
+            actionRoute = "", navController = navController)
     }
 
     @Composable
@@ -254,7 +276,9 @@ class DiseaseDescription{
                     "plants do not suffer from drought stress; disease can be effectively controlled by " +
                     "the application of appropriate systemic fungicides, where available"
         )
-        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Rice Blast",Routes.listdiseases, navController = navController)
+        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Rice Blast",Routes.listdiseases, action_icon = Icons.Filled.History,
+            actionTitle = "history",
+            actionRoute = "",navController = navController)
 
     }
 }

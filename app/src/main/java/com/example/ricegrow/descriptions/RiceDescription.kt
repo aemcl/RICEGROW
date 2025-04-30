@@ -20,6 +20,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
@@ -167,6 +168,9 @@ class RiceDescription {
                     icon = Icons.Filled.Home,
                     pageTitle = "Rice",
                     iconRoute = Routes.home,
+                    action_icon = Icons.Filled.History,
+                    actionTitle = "history",
+                    actionRoute = Routes.history,
                     navController = navController
                 )
                 Box(
@@ -209,7 +213,9 @@ fun BlackRice(navController: NavController) {
         plantingMonth = "May\nJune\nJuly\n",
         harvestingMonth = "Around 3 to 4 months (Between September and December)"
     )
-    MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Black Rice", iconRoute = "",navController = navController)
+    MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Black Rice", iconRoute = "",action_icon = Icons.Filled.History,
+        actionTitle = "history",
+        actionRoute = "",navController = navController)
 }
 
 
@@ -225,7 +231,15 @@ fun BlackRice(navController: NavController) {
             plantingMonth = "May\nJune\nJuly",
             harvestingMonth = "About 3 to 4 months (Between September and December"
         )
-        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Dinorado", iconRoute = "",navController = navController)
+        MainTopBar(
+            icon = Icons.AutoMirrored.Filled.ArrowBack,
+            pageTitle = "Dinorado",
+            iconRoute = "",
+            action_icon = Icons.Filled.History,
+            actionTitle = "history",
+            actionRoute = Routes.history,
+            navController = navController
+        )
     }
 
     @Composable
@@ -240,7 +254,15 @@ fun BlackRice(navController: NavController) {
             plantingMonth = "May\nJune\nJuly\nAugust",
             harvestingMonth = "Around 3 to 4 Months (Between September & December)"
         )
-        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Kasolid (11026)", iconRoute = "",navController = navController)
+        MainTopBar(
+            icon = Icons.AutoMirrored.Filled.ArrowBack,
+            pageTitle = "Kasolid (11026)",
+            iconRoute = "",
+            action_icon = Icons.Filled.History,
+            actionTitle = "history",
+            actionRoute = Routes.history,
+            navController = navController
+        )
     }
 
     @Composable
@@ -255,7 +277,15 @@ fun BlackRice(navController: NavController) {
                             "Dry Seasom(November to December)",
             harvestingMonth = "Occurs about 100 to 120 days after planting"
         )
-        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Glutinous Rice", iconRoute = "",navController = navController)
+        MainTopBar(
+            icon = Icons.AutoMirrored.Filled.ArrowBack,
+            pageTitle = "Glutinous Rice",
+            iconRoute = "",
+            action_icon = Icons.Filled.History,
+            actionTitle = "history",
+            actionRoute = Routes.history,
+            navController = navController
+        )
     }
 
     @Composable
@@ -270,7 +300,15 @@ fun BlackRice(navController: NavController) {
             plantingMonth = "May\nJune\nJuly\nAugust",
             harvestingMonth = "Around 3 to 4 Months (Between September & December)"
         )
-        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Pilit (11022)", iconRoute = "",navController = navController)
+        MainTopBar(
+            icon = Icons.AutoMirrored.Filled.ArrowBack,
+            pageTitle = "Pilit (11022)",
+            iconRoute = "",
+            action_icon = Icons.Filled.History,
+            actionTitle = "history",
+            actionRoute = Routes.history,
+            navController = navController
+        )
     }
 
     @Composable
@@ -286,7 +324,15 @@ fun BlackRice(navController: NavController) {
             harvestingMonth = "For the Wet Season (October to November)\n" +
                             "For the Dry Season ( March to April)"
         )
-        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Pusa Basmati (1121)", iconRoute = "",navController = navController)
+        MainTopBar(
+            icon = Icons.AutoMirrored.Filled.ArrowBack,
+            pageTitle = "Pusa Basmati (1121)",
+            iconRoute = "",
+            action_icon = Icons.Filled.History,
+            actionTitle = "history",
+            actionRoute = Routes.history,
+            navController = navController
+        )
     }
 
     @Composable
@@ -300,7 +346,15 @@ fun BlackRice(navController: NavController) {
             plantingMonth = "Wet Season(June to July)",
             harvestingMonth = "120-130 days after sowing"
         )
-        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Pusa Basmati (1692)", iconRoute = "",navController = navController)
+        MainTopBar(
+            icon = Icons.AutoMirrored.Filled.ArrowBack,
+            pageTitle = "Pusa Basmati (1692)",
+            iconRoute = "",
+            action_icon = Icons.Filled.History,
+            actionTitle = "history",
+            actionRoute = Routes.history,
+            navController = navController
+        )
     }
 
     @Composable
@@ -318,7 +372,15 @@ fun BlackRice(navController: NavController) {
             harvestingMonth = "Wet Season: October to December.\n" +
                             "Dry Season: November and January"
         )
-        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Metao (11015)", iconRoute = "",navController = navController)
+        MainTopBar(
+            icon = Icons.AutoMirrored.Filled.ArrowBack,
+            pageTitle = "Metao (11015)",
+            iconRoute = "",
+            action_icon = Icons.Filled.History,
+            actionTitle = "history",
+            actionRoute = Routes.history,
+            navController = navController
+        )
     }
 
     @Composable
@@ -335,6 +397,14 @@ fun BlackRice(navController: NavController) {
             harvestingMonth = "Wet Season: October to December \n" +
                              "Dry season: March to May"
         )
-        MainTopBar(icon = Icons.AutoMirrored.Filled.ArrowBack, pageTitle = "Pirurutong", iconRoute = "",navController = navController)
+        MainTopBar(
+            icon = Icons.AutoMirrored.Filled.ArrowBack,
+            pageTitle = "Pirurutong",
+            iconRoute = "",
+            action_icon = Icons.Filled.History,
+            actionTitle = "history",
+            actionRoute = Routes.history,
+            navController = navController
+        )
     }
 }
